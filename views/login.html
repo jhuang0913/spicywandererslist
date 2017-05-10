@@ -1,0 +1,25 @@
+<div class="row fluid login">
+    <div class="dialog">
+        <p class="brand" href="index.html">SpicyWanderesList</p>
+        <div class="block">
+            <div class="blcok-header">
+                <h2>Sign In</h2>
+            </div>
+
+            //POST require to /authenticate
+            <form action="/authenticate" method="POST">
+                <label>Username</label> //username parameter
+                <input id="username" name="username" placeholder="Username" type="text" class="span12" />
+                <a class="reset-password" href="#">Forget your password?</a>
+
+                <label>Password</label> //password parameter
+                <input id="password" name="password" placeholder="Password" type="text" class="span12" />
+                <div class="form-actions">
+                    <a class="btn btn-primary" href="/signup">Sign Up!</a>
+                    <button type="submit" class="btn btn-sucess pull-right">Sign In</button>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

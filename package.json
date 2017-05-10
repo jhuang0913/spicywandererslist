@@ -1,27 +1,31 @@
 {
-  "name": "spicywandererslist",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jhuang0913/spicywandererslist.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jhuang0913/spicywandererslist/issues"
-  },
-  "homepage": "https://github.com/jhuang0913/spicywandererslist#readme",
-  "dependencies": {
-    "body-parser": "^1.17.1",
-    "express": "^4.15.2",
-    "express-handlebars": "^3.0.0",
-    "mysql": "^2.13.0",
-    "passport": "^0.3.2",
-    "sequelize": "^3.30.4"
-  }
+    "name": "spicywandererslist",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jhuang0913/spicywandererslist.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jhuang0913/spicywandererslist/issues"
+    },
+    "homepage": "https://github.com/jhuang0913/spicywandererslist#readme",
+    "dependencies": {
+        "bcrypt": "^1.0.2",
+        "body-parser": "^1.17.1",
+        "cookie-parser": "^1.4.3",
+        "express": "^3.21.2",
+        "express-handlebars": "^3.0.0",
+        "http": "0.0.0",
+        "mysql": "^2.13.0",
+        "passport": "^0.3.2",
+        "routes": "^2.1.0",
+        "sequelize": "^3.30.4"
+    }
 }
