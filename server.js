@@ -17,6 +17,9 @@ var express = require('express'),
 var app = express(),
     PORT = process.env.PORT || 8080;
 
+// Static directory
+app.use(express.static("./public"));
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,16 +31,6 @@ app.use(session({ secret: "dancingCats", resave: true, saveUninitialized: true }
 app.use(passport.initialize());
 app.use(passport.session()); //persistent login sessions
 
-
-// Static directory
-app.use(express.static("./public"));
-
-// Routes =============================================================
-var routes = require("./controllers/appController.js");
-app.use("/", routes);
-
-require("./config/passport/passport.js")(passport, db.user);
-
 app.use(methodOverride("_method"));
 
 // For Handlebars
@@ -46,10 +39,16 @@ app.set("view engine", "handlebars");
 
 var db = require("./models");
 
+// Routes =============================================================
+var routes = require("./controllers/appController.js");
+app.use("/", routes);
+
 // Display welcome on homepage
 app.get('/', function(req, res) {
     res.send('Welcome!');
 });
+
+require("./config/passport/passport.js")(passport, db.user);
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({ force: true }).then(function() {

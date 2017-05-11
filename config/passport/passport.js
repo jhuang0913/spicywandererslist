@@ -4,6 +4,7 @@ module.exports = function(passport, user) {
     var User = user;
     var LocalStrategy = require('passport-local').Strategy;
 
+
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
@@ -41,7 +42,7 @@ module.exports = function(passport, user) {
     }).then(function(user) {
         if (user) {
             return done(null, false, {
-                message: "That email already exist"
+                message: "That email is already taken"
             });
         } else {
             var userPassword = generateHash(password);
