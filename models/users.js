@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequelize) {
-    var User = sequelize.define('user', {
+    var User = sequelize.define('User', {
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -37,6 +37,18 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.ENUM("active", "inactive"),
             defaultValue: "active"
         }
+        },
+            {
+      // We're saying that we want our Users to have Todos
+      classMethods: {
+        associate: function(models) {
+          // Associating Users with Todos
+          // When a User is deleted, also delete any associated Todos
+          User.hasMany(models.Todo, {
+            onDelete: "cascade"
+          });
+        }
+      }
     });
     return User;
 };

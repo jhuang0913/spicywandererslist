@@ -1,53 +1,53 @@
-module.exports = function(sequelize, DataTypes){
+module.exports = function(sequelize, Sequelize){
     var Todo = sequelize.define("Todo", 
         {
             name: {
-                type:DataTypes.STRING,
-                allowNull: false,
+                type:Sequelize.STRING,
+                allowNull: false
             },
 
             details: {
-                type:DataTypes.TEXT,
-                allowNull: false,
+                type:Sequelize.TEXT,
+                allowNull: false
             },
             due_date: {
-                type:DataTypes.DATEONLY,
-                allowNull: false,
+                type:Sequelize.DATEONLY,
+                allowNull: false
                 //Needs Validation and calendar picker on front end
             },
             invitees: {
-                type:DataTypes.STRING
+                type:Sequelize.STRING
                 //Needs Validation for email?
             },
             list_name: {
-                type:DataTypes.STRING
-                allowNull: false,
+                type:Sequelize.STRING,
+                allowNull: false
                 //Should this have a default value?
             },
             repeating: {
-                type:DataTypes.BOOLEAN
+                type:Sequelize.BOOLEAN
                 //Do we need another column to handle the type of repeating?
             },
             priority: {
-                type:DataTypes.INTEGER
+                type:Sequelize.INTEGER
                 //We can convert the the integer value to a color system for the front-end
             },
             email_notifications: {
                 //Simple true or false to send email notifcations
-                type:DataTypes.BOOLEAN
+                type:Sequelize.BOOLEAN
                 
             },
             email_datetime: {
                 //Only used if email notifications is true
-                type:DataTypes.DATE
+                type:Sequelize.DATE
             },
             complete: {
-                type:DataTypes.BOOLEAN
+                type:Sequelize.BOOLEAN
                 //Simple true or false could be used to come back to already completed tasks
             },
             document_repository: {
                 //Need to research how to hook up with Amazon Database for this storage
-                type:DataTypes.DATETIME
+                type:Sequelize.TEXT
             }
         },
             {
