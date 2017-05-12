@@ -29,7 +29,7 @@ router.post("/signup", passport.authenticate('local-signup', {
 
 router.get("/signin", passport.authenticate('local-signup', {
     successRedirect: "/dashboard",
-    failureRedirect: "/signup"
+    failureRedirect: "/main"
 }));
 
 router.get("/logout", function(req, res) {
