@@ -2,12 +2,23 @@
 <html>
  
 <head>
-    <title>Wanderes List</title>
+    <title>Passport with Sequelize</title>
 </head>
  
 <body>
     <h2>Dashboard</h2>
-    <h5>Welcome! You are login in!</h5>
+    <h5>Hurray! you are logged in.</h5>
+        <form id="addToDo" name="addToDO" method="post" action="/addToDo">
+        <label for="Todo Name">Todo Name</label>
+        <input class="text" name="name" type="text" /><br>
+        <label for="details">Details</label>
+        <input name="details" type="text" /><br>
+        <label for="dueDate">Due Date</label>
+        <input name="due_date" type="date" /><br>
+        <label for="list_name">Todo Lists</label>
+        <input name="list_name" type="dropdown" /><br>
+        <input class="btn" type="submit" value="Sign Up" />
+    </form>
  
 </body>
  
