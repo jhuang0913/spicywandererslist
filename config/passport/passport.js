@@ -4,6 +4,7 @@ var passport = require("passport");
 var FacebookStrategy = require("passport-facebook").Strategy;
 var db = require("../../models");
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
 console.log(db.User);
 
@@ -136,4 +137,24 @@ module.exports = function(passport, user) {
 
 
     ));
+
+
+    passport.use(new GoogleStrategy({
+            clientID: configAuth.googleAuth.clientID,
+            clientSecret: configAuth.googleAuth.clientSecret,
+            callbackURL: configAuth.googleAuth.callbackURL
+        },
+        function(accessToken, refreshToken, profile, cb) {
+            console.log(profile);
+            db.User.findOrCreate({ where: { authID: profile.id }, defaults: { firstName: profile.displayName, lastName: profile.displayName } }).then(function(user, created) {
+                console.log(user, created);
+
+            });
+
+        }
+
+
+    ));
+
+
 };
