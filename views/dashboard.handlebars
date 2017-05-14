@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <!--Facebook Info-->
+                {{!--<!--Facebook Info-->--}}
                 <div class="col-sm-6">
                     <div class="well">
                         <h3> <span class="fa fa-user"></span>Local</h3>
@@ -50,6 +50,24 @@
                         <strong>email</strong>: <%user.facebook.token%><br>
                         <strong>password</strong>: <%user.facebook.email%><br>
                         <strong>name</strong>: <% user.facebook.name%>
+                    </p>
+                    </div>
+                </div>
+
+                
+                {{!--Google Info--}}
+                <div class="col-sm-6">
+                    <div class="well">
+                        <h3 class="text-danger"> <span class="fa fa-user"></span>Local</h3>
+
+                <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google"></span><Facebook</a>
+
+
+                    <p>
+                        <strong>id</strong>: <%user.google.id%><br>
+                        <strong>email</strong>: <%user.google.token%><br>
+                        <strong>password</strong>: <%user.google.email%><br>
+                        <strong>name</strong>: <% user.google.name%>
                     </p>
                     </div>
                 </div>

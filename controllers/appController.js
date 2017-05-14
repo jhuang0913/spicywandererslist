@@ -4,19 +4,19 @@ var express = require("express"),
     db = require("../models");
 
 
-var isLoggedIn = function(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/signin");
-};
+// var isLoggedIn = function(req, res, next) {
+//     if (req.isAuthenticated()) {
+//         return next();
+//     }
+//     res.redirect("/signin");
+// };
 router.get("/", function(req, res) {
     res.render("index");
 });
 
-router.get("/signup", function(req, res) {
-    res.render("signup");
-});
+// router.get("/signup", function(req, res) {
+//     res.render("signup");
+// });
 
 router.get("/dashboard", isLoggedIn, function(req, res) {
     db.User.findAll({}).then(function(dbUser) {
@@ -32,20 +32,20 @@ router.get("/dashboard", isLoggedIn, function(req, res) {
 });
 
 
-router.post("/signup", passport.authenticate('local-signup', {
-    successRedirect: "/dashboard",
-    failureRedirect: "/signup"
-}));
+// router.post("/signup", passport.authenticate('local-signup', {
+//     successRedirect: "/dashboard",
+//     failureRedirect: "/signup"
+// }));
 
 router.get("/signin", passport.authenticate('local-signup', {
     successRedirect: "/dashboard",
-    failureRedirect: "/signup"
+    failureRedirect: "/sigin"
 }));
 
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback
-router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 
 // Facebook will redirect the user to this URL after approval.  Finish the
 // authentication process by attempting to obtain an access token.  If
@@ -53,6 +53,14 @@ router.get('/auth/facebook', passport.authenticate('facebook'));
 // authentication has failed.
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/'
+    }));
+
+router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback',
+    passport.authenticate('google', {
         successRedirect: '/dashboard',
         failureRedirect: '/'
     }));
