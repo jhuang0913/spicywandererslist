@@ -37,6 +37,9 @@ app.use(methodOverride("_method"));
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//Set public folder
+app.use(express.static(process.cwd() + "/public"));
+
 var db = require("./models");
 
 // Routes =============================================================
