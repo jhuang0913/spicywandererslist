@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home | To Do List</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Kalam" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<!--Log In Modal -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Log In</h4>
+      <div class="divider"></div>
+                <div class="row">
+                <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                    <input id="username" type="text" class="validate">
+                    <label for="Username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                    </div>
+                </div>
+                </form>
+            </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-action modal-close waves-effect waves-green btn-flat cyan darken-2 white-text">Log In</button>
+    </div>
+  </div>
+
+<!--Header-->    
+<nav class="head-foot" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo center" >
+          <img src="assets/images/logo-full.png" style="height:50px; width:50px; margin-top:7px">
+      </a>
+    </div>
+</nav>
+
+<!--Main Body-->
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center">Check!</h1>
+      <h4 class="header center">The Only To-Do List App You'll Ever Need</h4>
+      <div class="row center">
+        <button id="login-button" class="btn-large waves-effect waves-light" data-target="modal1">LOG IN </button>
+      </div>
+      <br><br>
+      <div class="row center">
+        <a href="#" id="signup-button" class="btn-large waves-effect waves-light">SIGN UP</a>
+      </div>
+      <br><br>
+      <div class="divider"></div>
+      <br>
+      <div class="row center">
+        <h5 class="header col s12 light">Sign In With Your Social Media Accounts</h5>
+      </div>
+      <div class="row center">
+        <a href="#">
+            <img class="responsive-img circle" src="assets/images/google.png" style="height:55px; width:55px">
+        </a>
+            <a href="#">
+                <img class="responsive-img circle" src="assets/images/facebook.png" style="height:55px; width:55px">
+            </a>
+      </div>
+
+    </div>
+  </div>
+   
+<!--Footer-->    
+    <footer class="page-footer head-foot">
+    <div class="container head-foot">
+ <!--   <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+    <p class="center"> ©Spicy Wanderers </p> 
+      </div>
+    </div>
+  </footer>
+
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    $("#modal1").modal();
+  });
+    </script>
+</body>
+</html>        
