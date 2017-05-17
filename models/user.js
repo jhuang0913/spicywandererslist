@@ -8,11 +8,7 @@ module.exports = function(sequelize, Sequelize) {
         authID: {
             type: Sequelize.STRING
         },
-        firstName: {
-            type: Sequelize.STRING,
-            notEmpty: true
-        },
-        lastName: {
+        displayName: {
             type: Sequelize.STRING,
             notEmpty: true
         },

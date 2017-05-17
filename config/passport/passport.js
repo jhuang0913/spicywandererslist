@@ -6,24 +6,29 @@ var db = require("../../models");
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
-console.log(db.User);
+//console.log(db.User);
 
 module.exports = function(passport, user) {
 
-    // passport.serializeUser(function(user, done) {
-    //     done(null, user.id);
-    // });
+    passport.serializeUser(function(user, done) {
+        console.log("console log serialize User: " + user)
+        done(null, user);
+    });
 
-    // passport.deserializeUser(function(id, done) {
-    //     db.User.findById(id).then(function(user) {
-    //         if (user) {
-    //             done(null, user.get());
+    passport.deserializeUser(function(obj, done) {
+        console.log("console log deserialzeUser: " + id)
 
-    //         } else {
-    //             done(user.errors, null);
-    //         }
-    //     });
-    // });
+        // db.User.findById(id).then(function(user) {
+        //     if (user) {
+        //         done(null, user.get());
+
+        //     } else {
+        //         done(user.errors, null);
+        //     }
+        // });
+
+        done(null, obj);
+    });
 
     // passport.use('local-signup', new LocalStrategy({
     //         usernameField: 'email',
@@ -128,9 +133,13 @@ module.exports = function(passport, user) {
             callbackURL: configAuth.facebookAuth.callbackURL
         },
         function(accessToken, refreshToken, profile, cb) {
-            console.log(profile);
-            db.User.findOrCreate({ where: { authID: profile.id }, defaults: { firstName: profile.displayName, lastName: profile.displayName } }).then(function(user, created) {
-                console.log(user, created);
+            // console.log(profile);
+            //cb(null, profile);
+            db.User.findOrCreate({ where: { authID: profile.id }, raw: true, defaults: { displayName: profile.displayName } }).spread(function(user, created) {
+                console.log("this console logs the FB stuff" + created, user.get());
+
+                return cb(user, created);
+
             });
 
         }
@@ -143,17 +152,21 @@ module.exports = function(passport, user) {
             clientID: configAuth.googleAuth.clientID,
             clientSecret: configAuth.googleAuth.clientSecret,
             callbackURL: configAuth.googleAuth.callbackURL
+
         },
         function(accessToken, refreshToken, profile, cb) {
-            console.log(profile);
-            db.User.findOrCreate({ where: { authID: profile.id }, defaults: { firstName: profile.displayName, lastName: profile.displayName } }).then(function(user, created) {
-                console.log(user, created);
+            // console.log(profile);
 
+            db.User.findOrCreate({ where: { authID: profile.id }, defaults: { displayName: profile.displayName } }).spread(function(user, created) {
+                // console.log("We want to know!" + user);
+                return cb(created, user);
             });
 
+
+
+
+
         }
-
-
     ));
 
 

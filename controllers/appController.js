@@ -4,13 +4,19 @@ var express = require("express"),
     db = require("../models");
 
 
-// var isLoggedIn = function(req, res, next) {
-//     if (req.isAuthenticated()) {
-//         return next();
-//     }
-//     res.redirect("/signin");
-// };
+var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+var FacebookStrategy = require("passport-facebook").Strategy;
+
+
+var isLoggedIn = function(req, res, next) {
+    // console.log(req.isAuthenticated());
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/dashboard");
+};
 router.get("/", function(req, res) {
+    // console.log("profile");
     res.render("index");
 });
 
@@ -19,17 +25,18 @@ router.get("/", function(req, res) {
 // });
 
 router.get("/dashboard", isLoggedIn, function(req, res) {
-    db.User.findAll({}).then(function(dbUser) {
-        console.log(dbUser);
-
-        var hbsObject = {
-
-            user: dbUser
-        };
-        res.render("dashboard", hbsObject);
-    })
-
+    // db.Todo.findAll({}).then(function(dbTodos) {
+    //     var hbsObject = {
+    //         todoList: dbTodos
+    //     };
+    //     res.render("dashboard", hbsObject);
+    res.render('dashboard', {
+        user: req.user
+    });
 });
+
+
+
 
 
 // router.post("/signup", passport.authenticate('local-signup', {
@@ -37,15 +44,15 @@ router.get("/dashboard", isLoggedIn, function(req, res) {
 //     failureRedirect: "/signup"
 // }));
 
-router.get("/signin", passport.authenticate('local-signup', {
-    successRedirect: "/dashboard",
-    failureRedirect: "/sigin"
-}));
+// router.get("/signin", passport.authenticate('local-signup', {
+//     successRedirect: "/dashboard",
+//     failureRedirect: "/sigin"
+// }));
 
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
 //     /auth/facebook/callback
-router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 
 // Facebook will redirect the user to this URL after approval.  Finish the
 // authentication process by attempting to obtain an access token.  If
@@ -53,17 +60,39 @@ router.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'
 // authentication has failed.
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/'
-    }));
+        failureRedirect: '/',
+        successRedirect: "/dashboard"
+    }),
+    function(req, res) {
+        console.log("something", req.user);
+        res.json(req.user);
+    });
 
-router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+// router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
+
+
+router.get('/auth/google',
+    passport.authenticate('google', {
+        scope: ['https://www.googleapis.com/auth/plus.login',
+            'https://www.googleapis.com/auth/plus.profile.emails.read'
+        ]
+    }));
 
 router.get('/auth/google/callback',
-    passport.authenticate('google', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/'
-    }));
+    passport.authenticate('google', { failureRedirect: '/' }),
+    function(req, res) {
+        // console.log(req.user);
+        // Successful authentication, redirect home.
+        res.redirect('/dashboard');
+    });
+
+
+
+// router.get('/auth/google/callback',
+//     passport.authenticate('google', {
+//         successRedirect: '/auth/google/success',
+//         failureRedirect: '/auth/google/failure'
+//     }));
 
 router.get("/logout", function(req, res) {
     req.session.destroy(function(err) {
@@ -71,6 +100,16 @@ router.get("/logout", function(req, res) {
     });
 });
 
+router.get("/test", function(req, res) {
+    // console.log("request: " + req)
+    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+        // console.log('dbTodos Query result: ' + dbTodo)
+        var hbsObject = {
+            todoList: dbTodo
+        };
+        res.render("test", hbsObject);
+    });
+});
 
 // router.get("/signin", function(req, res) {
 //     res.render("signin");
