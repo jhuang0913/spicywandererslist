@@ -43,7 +43,25 @@
 <!--Main Body-->
 <div class="section">
     <div class="container">
-        <div class="row">
+        <div class="row"> 
+            <div class="col l4" id="addTodo">
+                <table class="bordered highlight">
+                    <th>Add a New Todo</th>
+                        <form id="addToDo" name="addToDo" method="post" action="/add">
+                        <label for="name">Todo Name</label>
+                        <input class="text" name="name" type="input" /><br>
+                        <label for="details">Details</label>
+                        <input class="text" name="details" type="input" /><br>
+                        <label for="due_date">Due Date</label>
+                        <input name="due_date" type="date" /><br>
+                        <label for="list_name">Todo Type</label>
+                        <input name="list_name" type="input" /><br>
+                        <input type="hidden" value="1" name="UserId">
+                        <input class="btn" type="submit" value="Add Task" />
+                        </form>
+                </table>
+            </div>
+            
             <div class="col l4" id="todo1">
                 <table class="bordered highlight">
                     <th class="center">To Do List 1</th>
