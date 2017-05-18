@@ -5,6 +5,7 @@ var FacebookStrategy = require("passport-facebook").Strategy;
 var db = require("../../models");
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+var gcal = require('google-calendar');
 
 //console.log(db.User);
 
@@ -137,8 +138,7 @@ module.exports = function(passport, user) {
             //cb(null, profile);
             db.User.findOrCreate({ where: { authID: profile.id }, raw: true, defaults: { displayName: profile.displayName } }).spread(function(user, created) {
                 console.log("this console logs the FB stuff" + created, user.get());
-
-                return cb(null, user);
+                return cb(null, profile);
 
             });
 
@@ -155,19 +155,26 @@ module.exports = function(passport, user) {
 
         },
         function(accessToken, refreshToken, profile, cb) {
-            // console.log(profile);
+            console.log(profile);
 
             db.User.findOrCreate({ where: { authID: profile.id }, defaults: { displayName: profile.displayName } }).spread(function(user, created) {
                 // console.log("We want to know!" + user);
                 return cb(null, profile);
             });
-
-
-
-
-
         }
     ));
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 };
