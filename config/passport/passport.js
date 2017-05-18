@@ -6,6 +6,10 @@ var db = require("../../models");
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var gcal = require('google-calendar');
+var fs = require('fs');
+var readline = require("readline");
+var google = require("googleapis");
+var googleAuth = require("google-auth-library");
 
 //console.log(db.User);
 
@@ -137,7 +141,7 @@ module.exports = function(passport, user) {
             // console.log(profile);
             //cb(null, profile);
             db.User.findOrCreate({ where: { authID: profile.id }, raw: true, defaults: { displayName: profile.displayName } }).spread(function(user, created) {
-                console.log("this console logs the FB stuff" + created, user.get());
+                console.log("this console logs the FB stuff" + created);
                 return cb(null, profile);
 
             });
@@ -163,11 +167,6 @@ module.exports = function(passport, user) {
             });
         }
     ));
-
-
-
-
-
 
 
 
