@@ -150,6 +150,48 @@
           <ul>
             <li><a class="white-text" href="#!">Link 1</a></li>
 
+
+<!doctype html>
+<html>
+    <head>
+        <title>Wanderers List</title>
+
+ 
+
+       
+<style>
+    body{padding-top: 80px;}
+    </style>
+     </head>
+
+    <body>
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1><span class="fa fa-lock"></span> Wanderers List</h1>
+                <a href = "/logout" class="btn btn-default btn-sm">Logout</a>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm">
+                    <div class="well">
+                        <h3> <span class="fa fa-user"></span>Hi! {{user.displayName}}</h3>
+
+                    <p>
+                        <strong>id</strong>: {{user.id}}<br>
+                        <strong>email</strong>: {{user.status}}<br>
+                    </p>
+                    </div>
+                </div>
+
+                {{!--<Facebook Info>
+                <div class="col-sm-6">
+                    <div class="well">
+                        <h3> <span class="fa fa-user"></span>Local</h3>
+
+                <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span><Facebook</a>
+
+
           </ul>
         </div>
         <div class="col l3 s12">
@@ -168,6 +210,11 @@
   </footer>
 
 
+                
+                !--Google Info--
+                <div class="col-sm-6">
+                    <div class="well">
+                        <h3 class="text-danger"> <span class="fa fa-user"></span>Local</h3>
 
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -178,3 +225,4 @@
     </script>
 </body>
 </html>  
+

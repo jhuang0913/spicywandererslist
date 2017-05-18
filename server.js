@@ -28,6 +28,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // For Passport
 app.use(session({ secret: "dancingCats", resave: true, saveUninitialized: true })); //Session secret
+
 app.use(passport.initialize());
 app.use(passport.session()); //persistent login sessions
 
