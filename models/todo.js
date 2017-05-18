@@ -79,7 +79,7 @@ module.exports = function(sequelize, Sequelize) {
         },
         list_name: {
             type: Sequelize.STRING,
-            allowNull: false
+            allowNull: true
                 //Should this have a default value?
         },
         repeating: {
