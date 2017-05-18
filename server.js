@@ -38,6 +38,9 @@ app.use(methodOverride("_method"));
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//Set public folder
+app.use(express.static(process.cwd() + "/public"));
+
 var db = require("./models");
 
 // Routes =============================================================
@@ -52,7 +55,7 @@ app.get('/', function(req, res) {
 require("./config/passport/passport.js")(passport, db.user);
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({}).then(function() {
     app.listen(PORT, function(err, data) {
         if (err) throw err;
         console.log("App is listening on: " + PORT);
