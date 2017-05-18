@@ -147,8 +147,6 @@ module.exports = function(passport, user) {
             });
 
         }
-
-
     ));
 
 
@@ -168,12 +166,10 @@ module.exports = function(passport, user) {
         }
     ));
 
-
-
-
-
-
-
-
+        }
+    ));
+}
 
 };
+
+

@@ -1,0 +1,23 @@
+body {
+    background-color: #2D2D29;
+}
+
+.btn-large, .btn-flat {
+    background-color: #3CA2A2;
+}
+
+.head-foot, table {
+    background-color: #215A6D;
+}
+
+p, h1, h2, h3, h4, h5 {
+    color: #DFECE6
+}
+
+h1 {
+    font-family: 'Acme', sans-serif;
+}
+
+h4 {
+    font-family: 'Kalam', cursive;
+}

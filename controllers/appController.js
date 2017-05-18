@@ -24,17 +24,69 @@ router.get("/", function(req, res) {
 //     res.render("signup");
 // });
 
-router.get("/dashboard", isLoggedIn, function(req, res) {
-    // db.Todo.findAll({}).then(function(dbTodos) {
-    //     var hbsObject = {
-    //         todoList: dbTodos
-    //     };
-    //     res.render("dashboard", hbsObject);
-    res.render('dashboard', {
-        user: req.user
+// router.get("/dashboard", isLoggedIn, function(req, res) {
+//     // db.Todo.findAll({}).then(function(dbTodos) {
+//     //     var hbsObject = {
+//     //         todoList: dbTodos
+//     //     };
+//     //     res.render("dashboard", hbsObject);
+//     res.render('dashboard', {
+//         user: req.user
+//     });
+// });
+
+router.get("/test", function(req, res) {
+    // console.log("request: " + req)
+    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+        // console.log('dbTodos Query result: ' + dbTodo)
+        var hbsObject = {
+            todoList: dbTodo
+        };
+        res.render("test", hbsObject);
     });
 });
 
+router.get("/dashboard", function(req, res) {
+    // console.log("request: " + req)
+    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+        // console.log('dbTodos Query result: ' + dbTodo)
+        var hbsObject = {
+            todoList: dbTodo
+        };
+        res.render("dashboard", hbsObject);
+    });
+});
+
+router.post("/add", function(req, res) {
+    console.log("add request: " + req.body)
+      db.Todo.create({
+                name: req.body.name,
+                details: req.body.details,
+                due_date: req.body.due_date,
+                list_name: req.body_list_name,
+                UserId: req.body.UserId}
+                // ,{include: [ User ]}
+                ).then(function(dbTodo) {
+          console.log('dbTodos Query result: ' + dbTodo)
+    var hbsObject = {
+      todoList: dbTodo
+    };  
+    res.redirect("/dashboard");
+});
+});
+
+router.delete("/delete/:id", function(req, res) {
+    db.Todo.destroy({
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbTodo){
+        var hbsObject = {
+      todoList: dbTodo
+    };  
+    res.redirect("/dashboard");
+});
+});
 
 
 
