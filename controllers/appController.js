@@ -68,6 +68,15 @@ router.get('/auth/facebook/callback',
         res.json(req.user);
     });
 
+
+
+
+
+
+
+
+
+
 // router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 
 
@@ -78,13 +87,42 @@ router.get('/auth/google',
         ]
     }));
 
+
+router.get('/auth/google', function(req, res, next) {
+    req.session.redirect = req.query.redirect;
+    next();
+}, passport.authenticate('google'));
+
 router.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     function(req, res) {
         // console.log(req.user);
         // Successful authentication, redirect home.
-        res.redirect('/dashboard');
+
+
+
+        res.redirect(req.session.redirect || '/dashboard');
+        // delete req.session.redirect;
+        // res.redirect('/dashboard');
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
