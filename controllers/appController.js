@@ -53,7 +53,7 @@ router.get("/dashboard", function(req, res) {
         var hbsObject = {
             todoList: dbTodo
         };
-        res.render("test", hbsObject);
+        res.render("dashboard", hbsObject);
     });
 });
 
@@ -71,7 +71,7 @@ router.post("/add", function(req, res) {
     var hbsObject = {
       todoList: dbTodo
     };  
-    res.redirect("/test");
+    res.redirect("/dashboard");
 });
 });
 
@@ -84,7 +84,7 @@ router.delete("/delete/:id", function(req, res) {
         var hbsObject = {
       todoList: dbTodo
     };  
-    res.redirect("/test");
+    res.redirect("/dashboard");
 });
 });
 

@@ -53,30 +53,20 @@
                                 <td>Due Date:{{this.due_date}}</td>
                                 <td>Details:{{this.details}}</td>
                                 <td>Todo Type:{{this.list_name}}</td>
-                                <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Done!</button>
+                                <td>
                                     <form action="/delete/{{this.id}}?_method=DELETE" method="POST">
                                     <input type="hidden" name="id" value="{{this.id}}">
-                                    <button type="submit">Delete Task!</button>
+                                    <button type="submit" class="waves-effect button button-pill button-tiny black white-text todo-button">Delete Task!</button>
                                     </form>
                                 </td>
                                 <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
                             </tr>
-                            {{#each todoList}}
-                                <ul>
-                                    <li>Task Name:{{this.name}}</li>
-                                    <li>Due Date:{{this.due_date}}</li>
-                                    <li>Details:{{this.details}}</li>
-                                    <li>Todo Type:{{this.list_name}}</li>
-                                <form action="/delete/{{this.id}}?_method=DELETE" method="POST">
-                                <input type="hidden" name="id" value="{{this.id}}">
-                                <button type="submit">Delete Task!</button>
-                                </form>
-                                </ul>
                             {{/each}}
+
                 </table>
             </div>
 
-            <div class="col l4" id="todo2">
+            {{!--<div class="col l4" id="todo2">
                 <table class="bordered highlight">
                     <th>To Do List 2</th>
                         <tr>
@@ -95,9 +85,9 @@
                             <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
                         </tr>
                 </table>
-            </div>
+            </div>--}}
 
-            <div class="col l4" id="todo3">
+            {{!--<div class="col l4" id="todo3">
                 <table class="bordered highlight">
                     <th>To Do List 3</th>
                         <tr>
@@ -116,7 +106,7 @@
                             <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
                         </tr>
                 </table>
-            </div>
+            </div>--}}
       </div>
 
     </div>
