@@ -24,17 +24,38 @@ router.get("/", function(req, res) {
 //     res.render("signup");
 // });
 
-router.get("/dashboard", isLoggedIn, function(req, res) {
-    // db.Todo.findAll({}).then(function(dbTodos) {
-    //     var hbsObject = {
-    //         todoList: dbTodos
-    //     };
-    //     res.render("dashboard", hbsObject);
-    res.render('dashboard', {
-        user: req.user
+// router.get("/dashboard", isLoggedIn, function(req, res) {
+//     // db.Todo.findAll({}).then(function(dbTodos) {
+//     //     var hbsObject = {
+//     //         todoList: dbTodos
+//     //     };
+//     //     res.render("dashboard", hbsObject);
+//     res.render('dashboard', {
+//         user: req.user
+//     });
+// });
+
+router.get("/test", function(req, res) {
+    // console.log("request: " + req)
+    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+        // console.log('dbTodos Query result: ' + dbTodo)
+        var hbsObject = {
+            todoList: dbTodo
+        };
+        res.render("test", hbsObject);
     });
 });
 
+router.get("/dashboard", function(req, res) {
+    // console.log("request: " + req)
+    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+        // console.log('dbTodos Query result: ' + dbTodo)
+        var hbsObject = {
+            todoList: dbTodo
+        };
+        res.render("test", hbsObject);
+    });
+});
 
 
 
