@@ -57,6 +57,37 @@ router.get("/dashboard", function(req, res) {
     });
 });
 
+router.post("/add", function(req, res) {
+    console.log("add request: " + req.body)
+      db.Todo.create({
+                name: req.body.name,
+                details: req.body.details,
+                due_date: req.body.due_date,
+                list_name: req.body_list_name,
+                UserId: req.body.UserId}
+                // ,{include: [ User ]}
+                ).then(function(dbTodo) {
+          console.log('dbTodos Query result: ' + dbTodo)
+    var hbsObject = {
+      todoList: dbTodo
+    };  
+    res.redirect("/test");
+});
+});
+
+router.delete("/delete/:id", function(req, res) {
+    db.Todo.destroy({
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbTodo){
+        var hbsObject = {
+      todoList: dbTodo
+    };  
+    res.redirect("/test");
+});
+});
+
 
 
 
