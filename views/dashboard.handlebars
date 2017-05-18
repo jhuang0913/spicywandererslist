@@ -4,14 +4,10 @@
 <html>
     <head>
         <title>Wanderers List</title>
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ 
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+       
 <style>
     body{padding-top: 80px;}
     </style>
@@ -26,18 +22,18 @@
 
             <div class="row">
 
-                <div class="col-sm-6">
+                <div class="col-sm">
                     <div class="well">
-                        <h3> <span class="fa fa-user"></span>Local</h3>
+                        <h3> <span class="fa fa-user"></span>Hi! {{user.displayName}}</h3>
 
                     <p>
                         <strong>id</strong>: {{user.id}}<br>
-                        <strong>email</strong>: {{user.email}}<br>
+                        <strong>email</strong>: {{user.status}}<br>
                     </p>
                     </div>
                 </div>
 
-                {{!--<!--Facebook Info-->--}}
+                {{!--<Facebook Info>
                 <div class="col-sm-6">
                     <div class="well">
                         <h3> <span class="fa fa-user"></span>Local</h3>
@@ -55,7 +51,7 @@
                 </div>
 
                 
-                {{!--Google Info--}}
+                !--Google Info--
                 <div class="col-sm-6">
                     <div class="well">
                         <h3 class="text-danger"> <span class="fa fa-user"></span>Local</h3>
@@ -67,10 +63,11 @@
                         <strong>id</strong>: <%user.google.id%><br>
                         <strong>email</strong>: <%user.google.token%><br>
                         <strong>password</strong>: <%user.google.email%><br>
+                
                         <strong>name</strong>: <% user.google.name%>
                     </p>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </body>
