@@ -1,17 +1,27 @@
 body {
-    background-color: #2D2D29;
+    background-color: #0CA5B0;
 }
 
-.btn-large, .btn-flat {
-    background-color: #3CA2A2;
+.btn-large,
+.btn-flat, button {
+    background-color: #A5B3AA;
 }
 
-.head-foot, table {
-    background-color: #215A6D;
+.head-foot {
+    background-color: #4E3F30;
 }
 
-p, h1, h2, h3, h4, h5 {
-    color: #DFECE6
+table, #addTodo {
+    background-color: #F8F4E4;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #FEFEEB
 }
 
 h1 {
@@ -20,4 +30,9 @@ h1 {
 
 h4 {
     font-family: 'Kalam', cursive;
+}
+
+#footer-text {
+    font-family: 'Kalam', cursive;
+    font-size: 18px;
 }

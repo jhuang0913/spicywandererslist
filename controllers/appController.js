@@ -46,7 +46,7 @@ router.get("/test", function(req, res) {
     });
 });
 
-router.get("/dashboard", function(req, res) {
+router.get("/dashboard/:UserId", function(req, res) {
     // console.log("request: " + req)
     db.Todo.findAll({ where: {
         UserId: req.params.id},
