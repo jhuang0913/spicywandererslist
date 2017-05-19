@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Acme|Kalam" rel="stylesheet">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
 <!--Header-->    
@@ -68,7 +69,6 @@
                                 <td>Due Date:{{due_date}}</td>
                                 <td>Details:{{this.details}}</td>
                                 <td>Todo Type:{{this.list_name}}</td>
-
                                 <td>
                                     <form action="/delete/{{this.id}}?_method=DELETE" method="POST">
                                     <input type="hidden" name="id" value="{{this.id}}">
