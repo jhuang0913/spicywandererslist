@@ -55,7 +55,7 @@
                         <input name="due_date" type="date" /><br>
                         <label for="list_name">Todo Type</label>
                         <input name="list_name" type="text" /><br>
-                        <input type="hidden" value="1" name="UserId">
+                        <input type="hidden" value="{{user.id}}" name="UserId">
                         <input class="btn" type="submit" value="Add Task" />
                         </form>
                 </table>
@@ -69,6 +69,7 @@
                                 <td>Due Date:{{due_date}}</td>
                                 <td>Details:{{this.details}}</td>
                                 <td>Todo Type:{{this.list_name}}</td>
+
                                 <td>
                                     <form action="/delete/{{this.id}}?_method=DELETE" method="POST">
                                     <input type="hidden" name="id" value="{{this.id}}">

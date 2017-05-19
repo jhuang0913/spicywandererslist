@@ -50,15 +50,20 @@ router.get("/", function(req, res) {
 // });
 
 router.get("/dashboard", function(req, res) {
-    // console.log("request: " + req)
-    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
-        // console.log('dbTodos Query result: ' + dbTodo)
-        var hbsObject = {
-            todoList: dbTodo
-        };
-        res.render("dashboard", hbsObject);
+    console.log("request: ", req.user.id)
+    db.User.findOne({ where: { authID: req.user.id } }).then(function(dbUser) {
+        db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+            // console.log('dbTodos Query result: ' + dbTodo)
+
+            var hbsObject = {
+                todoList: dbTodo,
+                user: dbUser
+            };
+            res.render("dashboard", hbsObject);
+        });
     });
 });
+
 
 router.post("/add", function(req, res) {
     console.log("add request: " + req.body)
