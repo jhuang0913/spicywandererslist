@@ -53,7 +53,7 @@ router.get("/dashboard", function(req, res) {
     console.log("request: ", req.user.id)
     db.User.findOne({ where: { authID: req.user.id } }).then(function(dbUser) {
         db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
-            // console.log('dbTodos Query result: ' + dbTodo)
+            // console.log('dbTodos Query result: ', dbTodo);
 
             var hbsObject = {
                 todoList: dbTodo,
