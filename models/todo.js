@@ -4,7 +4,6 @@
 //                         type: Sequelize.STRING,
 //                         allowNull: false
 //                     },
-
 //                     details: {
 //                         type: Sequelize.TEXT,
 //                         allowNull: false
@@ -34,7 +33,6 @@
 //                     email_notifications: {
 //                         //Simple true or false to send email notifcations
 //                         type: Sequelize.BOOLEAN
-
 //                     },
 //                     email_datetime: {
 //                         //Only used if email notifications is true
@@ -56,14 +54,12 @@
 //                                 Todo.belongsTo(models.User, {
 //                                             foreignKey: {
 //                                                 allowNull: false
-
 module.exports = function(sequelize, Sequelize) {
     var Todo = sequelize.define("Todo", {
         name: {
             type: Sequelize.STRING,
             allowNull: false
         },
-
         details: {
             type: Sequelize.TEXT,
             allowNull: false
@@ -93,7 +89,6 @@ module.exports = function(sequelize, Sequelize) {
         email_notifications: {
             //Simple true or false to send email notifcations
             type: Sequelize.BOOLEAN
-
         },
         email_datetime: {
             //Only used if email notifications is true
@@ -115,8 +110,6 @@ module.exports = function(sequelize, Sequelize) {
                 Todo.belongsTo(models.User, {
                     foreignKey: {
                         allowNull: false
-
-
                     }
                 });
             }

@@ -6,6 +6,9 @@ var express = require("express"),
 
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var FacebookStrategy = require("passport-facebook").Strategy;
+// var gcal = require('google-calendar');
+
+// var google_calendar = new gcal.GoogleCalendar(accessToken);
 
 
 var isLoggedIn = function(req, res, next) {
@@ -35,16 +38,16 @@ router.get("/", function(req, res) {
 //     });
 // });
 
-router.get("/test", function(req, res) {
-    // console.log("request: " + req)
-    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
-        // console.log('dbTodos Query result: ' + dbTodo)
-        var hbsObject = {
-            todoList: dbTodo
-        };
-        res.render("test", hbsObject);
-    });
-});
+// router.get("/test", function(req, res) {
+//     // console.log("request: " + req)
+//     db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+//         // console.log('dbTodos Query result: ' + dbTodo)
+//         var hbsObject = {
+//             todoList: dbTodo
+//         };
+//         res.render("test", hbsObject);
+//     });
+// });
 
 router.get("/dashboard", function(req, res) {
     // console.log("request: " + req)
@@ -59,33 +62,34 @@ router.get("/dashboard", function(req, res) {
 
 router.post("/add", function(req, res) {
     console.log("add request: " + req.body)
-      db.Todo.create({
-                name: req.body.name,
-                details: req.body.details,
-                due_date: req.body.due_date,
-                list_name: req.body_list_name,
-                UserId: req.body.UserId}
-                // ,{include: [ User ]}
-                ).then(function(dbTodo) {
-          console.log('dbTodos Query result: ' + dbTodo)
-    var hbsObject = {
-      todoList: dbTodo
-    };  
-    res.redirect("/dashboard");
-});
+    db.Todo.create({
+            name: req.body.name,
+            details: req.body.details,
+            due_date: req.body.due_date,
+            list_name: req.body.list_name,
+            UserId: req.body.UserId
+        }
+        // ,{include: [ User ]}
+    ).then(function(dbTodo) {
+        console.log('dbTodos Query result: ' + dbTodo)
+        var hbsObject = {
+            todoList: dbTodo
+        };
+        res.redirect("/dashboard");
+    });
 });
 
 router.delete("/delete/:id", function(req, res) {
     db.Todo.destroy({
-      where: {
-        id: req.body.id
-      }
-    }).then(function(dbTodo){
+        where: {
+            id: req.body.id
+        }
+    }).then(function(dbTodo) {
         var hbsObject = {
-      todoList: dbTodo
-    };  
-    res.redirect("/dashboard");
-});
+            todoList: dbTodo
+        };
+        res.redirect("/dashboard");
+    });
 });
 
 
@@ -135,7 +139,8 @@ router.get('/auth/facebook/callback',
 router.get('/auth/google',
     passport.authenticate('google', {
         scope: ['https://www.googleapis.com/auth/plus.login',
-            'https://www.googleapis.com/auth/plus.profile.emails.read'
+            'https://www.googleapis.com/auth/plus.profile.emails.read',
+            'https://www.googleapis.com/auth/calendar'
         ]
     }));
 
@@ -162,22 +167,6 @@ router.get('/auth/google/callback',
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // router.get('/auth/google/callback',
 //     passport.authenticate('google', {
 //         successRedirect: '/auth/google/success',
@@ -190,16 +179,17 @@ router.get("/logout", function(req, res) {
     });
 });
 
-router.get("/test", function(req, res) {
-    // console.log("request: " + req)
-    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
-        // console.log('dbTodos Query result: ' + dbTodo)
-        var hbsObject = {
-            todoList: dbTodo
-        };
-        res.render("test", hbsObject);
-    });
-});
+// router.get("/test", function(req, res) {
+//     // console.log("request: " + req)
+//     cal.listEvents(calendarId, "2016-04-28T08:00:00+08:00", "2016-04-28T12:00:00+08:00", "meeting").
+//     then(function(calList) {
+//         console.log("This console logs calList " + calList);
+//         var hbsObject = {
+//             calList: calList
+//         };
+//         res.render("test", hbsObject);
+//     });
+// });
 
 // router.get("/signin", function(req, res) {
 //     res.render("signin");
