@@ -50,13 +50,8 @@
                         <input name="due_date" type="date" /><br>
                         <label for="list_name">Todo Type</label>
                         <input name="list_name" type="text" /><br>
-<<<<<<< HEAD
-                        <input type="hidden" value="1" name="UserId">
-                        <input class="btn" type="submit" value="Add Task" />
-=======
                         <input type="hidden" value="{{user.id}}" name="UserId">
                         <input class="btn btn-large" type="submit" value="Add Task" />
->>>>>>> upstream/master
                         </form>
             </div>
         </div>
@@ -69,7 +64,6 @@
                 <table class="bordered highlight">
                         {{#each todoList}}
                             <tr>
-                                <td>Task Name:{{this.UserId}}</td>
                                 <td>Task Name:{{this.name}}</td>
                                 <td>Due Date:{{due_date}}</td>
                                 <td>Details:{{this.details}}</td>
@@ -99,14 +93,11 @@
   </div>
    
 <!--Footer-->    
-<<<<<<< HEAD
+
     <footer class="page-footer">
     <div class="container">
-=======
 <footer class="page-footer head-foot">
     <div class="container head-foot">
- 
->>>>>>> upstream/master
     </div>
     <div class="footer-copyright">
       <div class="container">

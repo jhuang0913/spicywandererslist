@@ -46,16 +46,18 @@ router.get("/test", function(req, res) {
     });
 });
 
-router.get("/dashboard/:UserId", function(req, res) {
-    // console.log("request: " + req)
-    db.Todo.findAll({ where: {
-        UserId: req.params.id},
-        include: [db.User] }).then(function(dbTodo) {
-        // console.log('dbTodos Query result: ' + dbTodo)
-        var hbsObject = {
-            todoList: dbTodo
-        };
-        res.render("dashboard", hbsObject);
+router.get("/dashboard", function(req, res) {
+    console.log("request: ", req.user.id)
+    db.User.findOne({ where: { authID: req.user.id } }).then(function(dbUser) {
+        db.Todo.findAll({ where: { UserId: dbUser.id }, include: [db.User] }).then(function(dbTodo) {
+            // console.log('dbTodos Query result: ' + dbTodo)
+
+            var hbsObject = {
+                todoList: dbTodo,
+                user: dbUser
+            };
+            res.render("dashboard", hbsObject);
+        });
     });
 });
 
