@@ -35,7 +35,7 @@
     <li><a href="#!" class="waves-effect">My Events</a></li>
     <li><a href="#!" class="waves-effect">My Calendar</a></li>
     <li><div class="divider"></div></li>
-    <li><a href="#!" class="waves-effect">Log Out</a></li>
+    <li><a href="/logout" class="waves-effect">Log Out</a></li>
   </ul>
   <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
         </div>
@@ -46,31 +46,30 @@
         <div class="row"> 
             <div class="col l4" id="addTodo">
                 <table class="bordered highlight">
-                    <th>Add a New Todo</th>
                         <form id="addToDo" name="addToDo" method="post" action="/add">
                         <label for="name">Todo Name</label>
-                        <input class="text" name="name" type="input" /><br>
+                        <input class="text" name="name" type="text" /><br>
                         <label for="details">Details</label>
-                        <input class="text" name="details" type="input" /><br>
+                        <input class="text" name="details" type="text" /><br>
                         <label for="due_date">Due Date</label>
                         <input name="due_date" type="date" /><br>
                         <label for="list_name">Todo Type</label>
-                        <input name="list_name" type="input" /><br>
-                        <input type="hidden" value="1" name="UserId">
+                        <input name="list_name" type="text" /><br>
+                        <input type="hidden" value="{{user.id}}" name="UserId">
                         <input class="btn" type="submit" value="Add Task" />
                         </form>
                 </table>
             </div>
             
-            <div class="col l4" id="todo1">
+            <div class="col l5" id="todo1">
                 <table class="bordered highlight">
-                    <th class="center">To Do List 1</th>
                         {{#each todoList}}
                             <tr>
                                 <td>Task Name:{{this.name}}</td>
-                                <td>Due Date:{{this.due_date}}</td>
+                                <td>Due Date:{{due_date}}</td>
                                 <td>Details:{{this.details}}</td>
                                 <td>Todo Type:{{this.list_name}}</td>
+
                                 <td>
                                     <form action="/delete/{{this.id}}?_method=DELETE" method="POST">
                                     <input type="hidden" name="id" value="{{this.id}}">
@@ -80,60 +79,16 @@
                                 <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
                             </tr>
                             {{/each}}
-
                 </table>
             </div>
-
-            {{!--<div class="col l4" id="todo2">
-                <table class="bordered highlight">
-                    <th>To Do List 2</th>
-                        <tr>
-                            <td>To Do Item 1</td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Done!</button></td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
-                        </tr>
-                        <tr>
-                            <td>To Do Item 2</td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Done!</button></td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
-                        </tr>
-                        <tr>
-                            <td>To Do Item 3</td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Done!</button></td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
-                        </tr>
-                </table>
-            </div>--}}
-
-            {{!--<div class="col l4" id="todo3">
-                <table class="bordered highlight">
-                    <th>To Do List 3</th>
-                        <tr>
-                            <td>To Do Item 1</td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Done!</button></td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
-                        </tr>
-                        <tr>
-                            <td>To Do Item 2</td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Done!</button></td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
-                        </tr>
-                        <tr>
-                            <td>To Do Item 3</td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Done!</button></td>
-                            <td><button class="waves-effect button button-pill button-tiny black white-text todo-button">Later!</button></td>
-                        </tr>
-                </table>
-            </div>--}}
       </div>
-
     </div>
   </div>
   <br><br><br><br>
   <div class="section calendar">
       <div class="row">
           <div class="col l12">
-                <p class="calendar">This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.
+<iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=America%2FNew_York" style="border-width:0" width=100% height="900" frameborder="0" scrolling="no"></iframe>                {{!--<p class="calendar">This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.This is where the Google Calendar goes. I'll figure that out later. Maybe look into Google Sign-In.--}}
           </div>
       </div>
   </div>
@@ -141,66 +96,7 @@
 <!--Footer-->    
     <footer class="page-footer">
     <div class="container">
- <!--   <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
 
-
-<!doctype html>
-<html>
-    <head>
-        <title>Wanderers List</title>
-
- 
-
-       
-<style>
-    body{padding-top: 80px;}
-    </style>
-     </head>
-
-    <body>
-        <div class="container">
-            <div class="jumbotron text-center">
-                <h1><span class="fa fa-lock"></span> Wanderers List</h1>
-                <a href = "/logout" class="btn btn-default btn-sm">Logout</a>
-            </div>
-
-            <div class="row">
-
-                <div class="col-sm">
-                    <div class="well">
-                        <h3> <span class="fa fa-user"></span>Hi! {{user.displayName}}</h3>
-
-                    <p>
-                        <strong>id</strong>: {{user.id}}<br>
-                        <strong>email</strong>: {{user.status}}<br>
-                    </p>
-                    </div>
-                </div>
-
-                {{!--{{Facebook Info}}
-                <div class="col-sm-6">
-                    <div class="well">
-                        <h3> <span class="fa fa-user"></span>Local</h3>
-
-                <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span><Facebook</a>--}}
-
-
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-          </ul>
-        </div>
-      </div> -->
     </div>
     <div class="footer-copyright">
       <div class="container">
@@ -208,21 +104,12 @@
       </div>
     </div>
   </footer>
-
-
                 
-                !--Google Info--
-                <div class="col-sm-6">
-                    <div class="well">
-                        <h3 class="text-danger"> <span class="fa fa-user"></span>Local</h3>
-
-
+            
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="assets/js/materialize.min.js"></script>
     <script type="text/javascript">
             $(".button-collapse").sideNav();
-
     </script>
 </body>
-</html>  
-
+</html> 

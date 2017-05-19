@@ -1,14 +1,13 @@
 {
     "development": {
         "username": "root",
-        "password": "root",
-        "port": 8080,
+        "password": "password123",
         "database": "wanderersList",
         "host": "127.0.0.1",
         "dialect": "mysql"
     },
-  "production": {
-    "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
-  }
+    "production": {
+        "use_env_variable": "JAWSDB_URL",
+        "dialect": "mysql"
+    }
 }
