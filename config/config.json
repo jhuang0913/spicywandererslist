@@ -1,7 +1,8 @@
 {
     "development": {
         "username": "root",
-        "password": "Makaveli05",
+        "password": "root",
+        "port": 8889
         "database": "wanderersList",
         "host": "127.0.0.1",
         "dialect": "mysql"
