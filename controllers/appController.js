@@ -48,7 +48,9 @@ router.get("/test", function(req, res) {
 
 router.get("/dashboard", function(req, res) {
     // console.log("request: " + req)
-    db.Todo.findAll({ include: [db.User] }).then(function(dbTodo) {
+    db.Todo.findAll({ where: {
+        UserId: req.params.id},
+        include: [db.User] }).then(function(dbTodo) {
         // console.log('dbTodos Query result: ' + dbTodo)
         var hbsObject = {
             todoList: dbTodo
@@ -63,7 +65,7 @@ router.post("/add", function(req, res) {
                 name: req.body.name,
                 details: req.body.details,
                 due_date: req.body.due_date,
-                list_name: req.body_list_name,
+                list_name: req.body.list_name,
                 UserId: req.body.UserId}
                 // ,{include: [ User ]}
                 ).then(function(dbTodo) {
@@ -159,25 +161,6 @@ router.get('/auth/google/callback',
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // router.get('/auth/google/callback',
 //     passport.authenticate('google', {
 //         successRedirect: '/auth/google/success',
@@ -200,9 +183,5 @@ router.get("/test", function(req, res) {
         res.render("test", hbsObject);
     });
 });
-
-// router.get("/signin", function(req, res) {
-//     res.render("signin");
-// });
 
 module.exports = router;
