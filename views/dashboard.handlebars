@@ -6,30 +6,27 @@
     <title>My Dashboard</title>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/buttons.css"  media="screen,projection"/>
     <link rel="stylesheet" href="assets/css/buttons.css">
     <link type="text/css" rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Acme|Kalam" rel="stylesheet">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
 <!--Header-->    
     <nav class="head-foot" role="navigation">
         <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo center" >
-                    <img src="assets/images/logo-full.png" style="height:50px; width:50px; margin-top:7px">
+                <a id="logo-container" href="#" class="brand-logo center">
+                    <img src="assets/images/logo-full.png" style="height:50px; width:50px;">
                 </a>
         <!-- Sidebar Menu -->
 <ul id="slide-out" class="side-nav">
-  <!-- Google Info goes here?  <li><div class="userView">
-      <div class="background">
-        <img src="images/office.jpg">
-      </div>
-      <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
-      <a href="#!name"><span class="white-text name">John Doe</span></a>
-      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-    </div></li> -->
-    <li><a href="#!" class="waves-effect">Dashboard</a></li>
+    <li><div class="userView">
+      <a href="#!user"><img class="circle" id="sideNavPic" src="assets/images/logo-full.png"></a>
+    </div></li>
+    <li><a href="/dashboard" class="waves-effect">Dashboard</a></li>
     <li><div class="divider"></div></li>
     <li><a href="#!" class="waves-effect">My To Do Lists</a></li>
     <li><a href="#!" class="waves-effect">My Events</a></li>
@@ -42,11 +39,10 @@
     </nav>
 <!--Main Body-->
 <div class="section">
-    <div class="container">
-        <div class="row"> 
-            <div class="col l4" id="addTodo">
-                <table class="bordered highlight">
-                        <form id="addToDo" name="addToDo" method="post" action="/add">
+    <div class="container center white">
+        <div class="row center"> 
+            <div class="col l12" id="addTodo">
+                        <form class="col l12" id="addToDo" name="addToDo" method="post" action="/add">
                         <label for="name">Todo Name</label>
                         <input class="text" name="name" type="text" /><br>
                         <label for="details">Details</label>
@@ -56,12 +52,16 @@
                         <label for="list_name">Todo Type</label>
                         <input name="list_name" type="text" /><br>
                         <input type="hidden" value="{{user.id}}" name="UserId">
-                        <input class="btn" type="submit" value="Add Task" />
+                        <input class="btn btn-large" type="submit" value="Add Task" />
                         </form>
-                </table>
             </div>
-            
-            <div class="col l5" id="todo1">
+        </div>
+    </div>
+
+<div class="section">
+    <div class="container">
+        <div class="row">            
+            <div class="col l12" id="todo1">
                 <table class="bordered highlight">
                         {{#each todoList}}
                             <tr>
@@ -69,7 +69,10 @@
                                 <td>Due Date:{{due_date}}</td>
                                 <td>Details:{{this.details}}</td>
                                 <td>Todo Type:{{this.list_name}}</td>
+<<<<<<< HEAD
                                 {{!--<td>email: {{this.todoList.User.email}}</td>--}}
+=======
+>>>>>>> eb7b0367ee94e640cdd426fb317c8472e299b551
                                 <td>
                                     <form action="/delete/{{this.id}}?_method=DELETE" method="POST">
                                     <input type="hidden" name="id" value="{{this.id}}">
@@ -95,13 +98,15 @@
   </div>
    
 <!--Footer-->    
+
     <footer class="page-footer">
     <div class="container">
-
+<footer class="page-footer head-foot">
+    <div class="container head-foot">
     </div>
     <div class="footer-copyright">
       <div class="container">
-    <p class="center"> ©Spicy Wanderers </p> 
+    <p class="center" id="footer-text"> ©Spicy Wanderers </p> 
       </div>
     </div>
   </footer>
